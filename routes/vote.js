@@ -1,7 +1,7 @@
 /*
- * All routes for Polls are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /polls
+ * All routes for Votes are defined here
+ * Since this file is loaded in server.js into api/votes,
+ *   these routes are mounted onto /votes
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
@@ -10,7 +10,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    db.addPoll({ ...req.body })
+    db.addVote({ ...req.body })
       .then(property => {
         res.send(property);
       })
