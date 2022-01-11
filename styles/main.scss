@@ -1,9 +1,14 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+main {
+  padding: 120px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  margin: auto;
 
+}
+
+body {
+  min-height: 100vh;
   background: rgb(163, 208, 219);
   background: linear-gradient(
     227deg,
@@ -14,4 +19,7 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+  margin: auto;
 }
+
+
