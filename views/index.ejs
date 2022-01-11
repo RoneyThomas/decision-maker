@@ -19,8 +19,16 @@
 <body>
   <main>
     <!-- use '/db' as a placeholder for action -->
-    <form action="/db" method="post">
+    <form id="create-poll" action="/db" method="post">
       <ul>
+        <li>
+          <label for="poll-title">Poll Title:</label>
+          <input type="text" id="poll-title" name="poll-title">
+        </li>
+        <li>
+          <label for="description">Description:</label>
+          <input type="textarea" id="option 1" name="option 1">
+        </li>
        <li>
          <label for="option 1">Option 1:</label>
          <input type="text" id="option 1" name="option 1">
