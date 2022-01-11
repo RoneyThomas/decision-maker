@@ -32,13 +32,13 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/polls");
-const widgetsRoutes = require("./routes/vote");
+const pollsRoutes = require("./routes/polls");
+const voteRoutes = require("./routes/vote");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/polls", usersRoutes(db));
-app.use("/api/vote", widgetsRoutes(db));
+app.use("/api/poll", pollsRoutes(db));
+app.use("/api/vote", voteRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
