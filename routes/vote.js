@@ -10,9 +10,10 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
+    console.log(req.body);
     db.addVote({ ...req.body })
       .then(property => {
-        res.send(property);
+        res.json(property);
       })
       .catch(e => {
         console.error(e);
