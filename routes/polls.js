@@ -7,27 +7,40 @@
 
 const express = require('express');
 const router = express.Router();
-const { addChoices, addPoll } = require('../lib/db');
+const matches = require('../lib/post-validate');
+
+const pollRequestRule = {
+  decision: 'string',
+  email: 'string',
+  choices: 'object'
+};
 
 module.exports = (db) => {
-
   router.post("/", (req, res) => {
-    db.addPoll({ ...req.body })
-      .then(property => {
-        res.send(property);
-      })
-      .catch(e => {
-        console.error(e);
-        res.send(e);
-      });
-    db.addChoices({ ...req.body })
-      .then(property => {
-        res.send(property);
-      })
-      .catch(e => {
-        console.error(e);
-        res.send(e);
-      });
+    console.log("Inside post");
+    console.log(req.body);
+    if (matches(req.body, pollRequestRule)) {
+      const { choices, ...polls } = req.body;
+      console.log(choices);
+      let poll, choice;
+      db.addPoll({ polls })
+        .then(propertyPoll => {
+          poll = propertyPoll;
+          console.log(propertyPoll);
+          return db.addChoices({ choices: choices, id: propertyPoll.id });
+        })
+        .then(propertyChoice => {
+          choice = propertyChoice;
+          console.log(poll, choice);
+          res.json({ poll: poll, choice: choice });
+        })
+        .catch(e => {
+          console.error(e);
+          res.send(e);
+        });
+    } else {
+      res.send("Invalid POST body");
+    }
 
   });
   return router;

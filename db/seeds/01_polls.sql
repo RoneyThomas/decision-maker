@@ -1,5 +1,5 @@
 -- Users table seeds here (Example)
-INSERT INTO polls (name, description, electorate_size, start_time, end_time, email)
+INSERT INTO polls (decision, description, electorate_size, start_time, end_time, email)
 VALUES ('1st Pool', 'preferred colour', 4, now(), now() + interval '4 hours', 'vladv9@gmail.com'),
         ('2nd Pool', 'preferred car', 4, now(), now() + interval '4 hours', 'vladv9@gmail.com'),
         ('3rd Pool', 'preferred plane', 4, now(), now() + interval '4 hours', 'vladv9@gmail.com'),
