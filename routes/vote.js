@@ -19,5 +19,9 @@ module.exports = (db) => {
         res.send(e);
       });
   });
+
+  router.get("/", (req, res) => {
+    res.render("vote");
+  });
   return router;
 };
