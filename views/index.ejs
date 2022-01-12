@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
@@ -19,32 +19,36 @@
 <body>
   <main>
     <!-- use '/db' as a placeholder for action -->
-    <form id="create-poll" action="/db" method="post">
-      <ul>
+    <form id="create-poll" action="/polls/new" method="post">
+
+      <ul id="list">
         <li>
-          <label for="poll-title">Poll Title:</label>
+          <label for="poll-title">Poll Title</label>
           <input type="text" id="poll-title" name="poll-title">
         </li>
         <li>
-          <label for="description">Description:</label>
-          <input type="textarea" id="option 1" name="option 1">
+          <label for="description">Description</label>
+          <input type="textarea" id="description" name="description">
         </li>
        <li>
-         <label for="option 1">Option 1:</label>
-         <input type="text" id="option 1" name="option 1">
+         <label for="email">Managing Email</label>
+         <input type="email" id="email" name="email">
        </li>
        <li>
-        <label for="option 2">Option 2:</label>
-        <input type="text" id="option 2" name="option 2">
+        <label for="duration">Running time (in hours)</label>
+        <input type="duration" id="duration" name="duration">
       </li>
-      <li>
-        <label for="option 3">Option 3:</label>
-        <input type="text" id="option 3" name="option 3">
-      </li>
-        <input type="submit" value="Create Poll">
       </ul>
+
+      <h3>Candidates List</h3>
+      <input type="text" id="candidate">
+      <input type="button" value="Add Candidate" onClick="addCandidate()">
+      <ol id="candidates"></ol>
+
+      <input type="submit" value="Create Poll">
      </form>
   </main>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 </body>
 
 </html>
