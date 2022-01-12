@@ -1,0 +1,15 @@
+INSERT INTO choices (poll_id, choices) 
+VALUES (1,ARRAY ['blue','red','green','yellow']),
+       (2,ARRAY ['honda','Lexus','Logan','Ford']),
+       (3,ARRAY ['Boeing 747','paper plane','supersonic']),
+       (4,ARRAY ['MAN','ROMAN','VOLVO']),
+       (5,ARRAY ['Monday','Sunday','Tuesday','Payday']),
+       (6,ARRAY ['Holloween','Christmas','Thanksgiving']),
+       (7,ARRAY ['water','beer','milk','wine']),
+       (8,ARRAY ['eggs&bacon','cereals with milk','fruit blends','just coffee']),
+       (9,ARRAY ['satelite','stake','fish','salad']),
+       (10,ARRAY ['running','swimming','footbal','chess']),
+       (11,ARRAY ['Central Island','Wonderland','Casa Loma','CN Tower']),
+       (12,ARRAY ['appartment','townhouse','detached','mansion']),
+       (13,ARRAY ['car','bus','subway','bike']),
+       (14,ARRAY ['BlueJays','Raptors','Dinamo','Manchester United']);
