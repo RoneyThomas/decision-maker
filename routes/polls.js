@@ -16,6 +16,19 @@ const pollRequestRule = {
 };
 
 module.exports = (db) => {
+  router.get("/:id", (req, res) => {
+    console.log("Inside the get");
+    console.log(req.params.id);
+    db.getPoll(req.params.id)
+      .then((poll) => {
+        res.json({ poll: poll });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+
   router.post("/", (req, res) => {
     console.log("Inside post");
     console.log(req.body);
