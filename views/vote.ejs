@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/ballot.css" type="text/css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <script type="text/javascript" src="/scripts/ballot.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -21,9 +23,11 @@
     <!-- TODO: Implement poll using jquery sortable interaction
       https://jqueryui.com/sortable
     -->
-    <ul id="rank-container" class="poll-list"></ul>
-    <ul id="choice-container" class="poll-list"></ul>
-  </main>
+    <form method="POST" action="/api/vote/">
+      <ul id="rank-container" class="poll-list"></ul>
+      <ul id="choice-container" class="poll-list"></ul>
+    </form>
+    </main>
 </body>
 
 </html>
