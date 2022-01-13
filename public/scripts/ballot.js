@@ -13,8 +13,6 @@ $(function () {
   })
 });
 
-
-
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -26,6 +24,7 @@ const createBallotElement = function (input) {
   // Create XSS safe text
   const choice = `${escape(input)}`;
   return $(`<li id="choice_${choice}" class="ballot-entry">${choice}</li>`);
+
 };
 
 const numToRank = function (num) {
