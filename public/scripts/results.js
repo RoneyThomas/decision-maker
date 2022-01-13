@@ -1,13 +1,10 @@
-const { render } = require("express/lib/response");
-const { numToRank, escape } = require("./functions");
-
-
 $(document).ready(() => {
-loadResults();
+  console.log("ready");
+  loadResults();
 });
 
 
-//name: string, percent <= 1: float, rank int
+//name: string, percent <= 1: float, rank: string
 //result = { name, percent}
 const createResultElement = function(result, rank) {
   // Create XSS safe text
@@ -31,14 +28,15 @@ const renderResults = function(results) {
   let i = 0;
   for (const result of results) {
     i++;
-    let $result = createResultElement(result, i);
+    let $result = createResultElement(result, numToRank(i));
     $("#results-list").append($result);
   }
 };
 
 const loadResults = function () {
-  $.get("/api/results", (data) => {
-    renderResults(data);
+  $.get("/api/results/dummy", (data) => {
+    $('.poll-title h2').text(data.title);
+    renderResults(data.results);
   })
 }
 

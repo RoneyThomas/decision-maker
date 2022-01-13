@@ -1,5 +1,3 @@
-const escape = require("./functions")
-
 $(function () {
   console.log("Ready");
   loadBallot();
@@ -14,12 +12,6 @@ $(function () {
   $('form').replaceWith( `<h1>THANK YOU FOR VOTING</h1>`);
   })
 });
-
-// const escape = function (str) {
-//   let div = document.createElement("div");
-//   div.appendChild(document.createTextNode(str));
-//   return div.innerHTML;
-// };
 
 
 const createBallotElement = function (input) {
@@ -62,7 +54,7 @@ const renderBallot = function (choices) {
 };
 
 const loadBallot = function () {
-  $.get("/api/vote/votes", (data) => {
+  $.get("/api/vote/dummy", (data) => {
     renderBallot(data);
   });
 };

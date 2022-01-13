@@ -24,8 +24,3 @@ const numToRank = function (num) {
       return num + "th";
   }
 };
-
-module.exports = {
-  escape,
-  numToRank
-}
