@@ -1,5 +1,6 @@
 -- Drop and recreate polls table
 DROP TABLE IF EXISTS polls CASCADE;
+CREATE EXTENSION "pgcrypto";
 CREATE TABLE polls (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   decision VARCHAR(255) NOT NULL,
