@@ -20,12 +20,10 @@
 <header><%- include('partials/_header') %></header>
 <body>
   <main>
-    <!-- TODO: Implement poll using jquery sortable interaction
-      https://jqueryui.com/sortable
-    -->
     <form method="POST" action="/api/vote/">
-      <ul id="rank-container" class="poll-list"></ul>
-      <ul id="choice-container" class="poll-list"></ul>
+      <ol id="rank-container" class="poll-list"></ol>
+      <ol id="choice-container" class="poll-list"></ol>
+      <input type="submit" id="vote-submit" value="Submit">
     </form>
     </main>
 </body>
