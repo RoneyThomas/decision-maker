@@ -1,3 +1,5 @@
+const escape = require("./functions")
+
 $(function () {
   console.log("Ready");
   loadBallot();
@@ -13,11 +15,11 @@ $(function () {
   })
 });
 
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
+// const escape = function (str) {
+//   let div = document.createElement("div");
+//   div.appendChild(document.createTextNode(str));
+//   return div.innerHTML;
+// };
 
 
 const createBallotElement = function (input) {
