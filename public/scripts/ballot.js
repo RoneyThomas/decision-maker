@@ -1,7 +1,10 @@
 $(function () {
   console.log("sometext");
   loadBallot();
+  $( "#choice-container" ).sortable();
 });
+
+
 
 const escape = function (str) {
   let div = document.createElement("div");
