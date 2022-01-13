@@ -1,7 +1,16 @@
 $(function () {
-  console.log("sometext");
+  console.log("Ready");
   loadBallot();
   $( "#choice-container" ).sortable();
+
+  $('form').submit((event) => {
+    event.preventDefault();
+
+    const poll_votes = $("#choice-container").sortable("toArray").map(x=>x.slice(7));
+    // TODO: add poll_id to post request
+    $.post("/api/vote", { poll_votes });
+  $('form').replaceWith( `<h1>THANK YOU FOR VOTING</h1>`);
+  })
 });
 
 
@@ -16,7 +25,7 @@ const escape = function (str) {
 const createBallotElement = function (input) {
   // Create XSS safe text
   const choice = `${escape(input)}`;
-  return $(`<li class="ballot-entry">${choice}</li>`);
+  return $(`<li id="choice_${choice}" class="ballot-entry">${choice}</li>`);
 };
 
 const numToRank = function (num) {
@@ -30,13 +39,13 @@ const numToRank = function (num) {
       return "13th";
     //regular cases
     case num % 10 === 1:
-      return num + "st"
+      return num + "st";
     case num % 10 === 2:
-      return num + "nd"
+      return num + "nd";
     case num % 10 === 3:
-      return num + "rd"
+      return num + "rd";
     default:
-      return num + "th"
+      return num + "th";
   }
 };
 
@@ -44,8 +53,8 @@ const renderBallot = function (choices) {
   let i = 0;
   for (const choice of choices) {
     i++;
-    let $rankNumber = createBallotElement(numToRank(i));
-    let $choice = createBallotElement(choice);
+    let $rankNumber = createBallotElement(numToRank(i), null);
+    let $choice = createBallotElement(choice, i);
     $('#rank-container').append($rankNumber);
     $('#choice-container').append($choice);
   }
