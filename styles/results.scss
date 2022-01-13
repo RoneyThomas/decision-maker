@@ -3,7 +3,7 @@
   padding: 15px;
   border-radius: 12px;
   border: 2px solid black;
-  width: 1000px;
+  width: 400px;
 }
 
 .poll-title {
@@ -12,21 +12,33 @@
 
 }
 
-.result {
+.option-name {
+  position:relative;
+  overflow-wrap: break-word;
+  justify-self: start;
+  width: 50%;
+}
+
+.result-box {
   margin: auto;
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content:flex-end;
   height: 100px;
   border: 1px solid gray;
 
+   .result-box > * {
+    margin: 0 10px 0 10px;
+  }
 }
+
 
 .result-bar-wrapper {
   position: relative;
   height: 30px;
-  width: 80%;
+  width: 40%;
   border: 1px solid gray;
 }
 .result-bar {
