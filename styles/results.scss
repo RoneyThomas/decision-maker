@@ -1,0 +1,40 @@
+.content-container {
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid black;
+  width: 1000px;
+}
+
+.poll-title {
+  overflow: hidden;
+  border-bottom: 1px solid black;
+
+}
+
+.result {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  border: 1px solid gray;
+
+}
+
+.result-bar-wrapper {
+  position: relative;
+  height: 30px;
+  width: 80%;
+  border: 1px solid gray;
+}
+.result-bar {
+  position: absolute;
+  background-color: aqua;
+  width: 10%;
+  height: 30px;
+}
+
+
+
