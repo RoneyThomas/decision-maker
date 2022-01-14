@@ -2,57 +2,22 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  <%- include('partials/_head') %>
+    <title>Descion Maker</title>
 </head>
-<header><%- include('partials/_header') %></header>
-<body>
+
+<body class="md:container sm:mx-auto px-4">
+  <header class="mx-auto">
+    <h1><a href="/"><img src="/img/logo.svg" alt="logo" height="22px" />Descion Maker</a></h1>
+  </header>
   <main>
-    <!-- use '/db' as a placeholder for action -->
-    <form id="create-poll" action="/db" method="post">
-
-      <ul id="list">
-        <li>
-          <label for="poll-title">Poll Title</label>
-          <input type="text" id="poll-title" name="poll-title">
-        </li>
-        <li>
-          <label for="description">Description</label>
-          <input type="textarea" id="description" name="description">
-        </li>
-        <li>
-          <label for="electorateSize">Expected amount of votes</label>
-          <input type="electorateSize" id="electorateSize" name="electorateSize">
-        </li>
-       <li>
-         <label for="email">Managing Email</label>
-         <input type="email" id="email" name="email">
-       </li>
-       <li>
-        <label for="duration">Running time (in hours)</label>
-        <input type="duration" id="duration" name="duration">
-      </li>
-      </ul>
-
-      <h3>Candidates List</h3>
-      <input type="text" id="candidate">
-      <input type="button" value="Add Candidate" onClick="addCandidate()">
-      <ol id="candidates"></ol>
-
-      <input type="submit" value="Create Poll">
-     </form>
+    <h1 class="text-3xl font-bold underline">
+      Hello world!
+    </h1>
   </main>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <footer>
+    <%- include('partials/_footer') %>
+  </footer>
 </body>
 
 </html>
