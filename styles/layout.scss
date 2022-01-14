@@ -48,3 +48,31 @@ footer {
   bottom: 0;
   background-color: purple;
 }
+
+
+.poll-container {
+
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid black;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+}
+
+.vertically-arranged {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+span {
+  align-content: space-between;
+}
+
+#submit {
+  align-self: center;
+  margin-top: 10px;
+  overflow: visible;
+}

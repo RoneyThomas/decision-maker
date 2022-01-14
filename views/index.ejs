@@ -18,39 +18,47 @@
 <header><%- include('partials/_header') %></header>
 <body>
   <main>
-    <!-- use '/db' as a placeholder for action -->
-    <form id="create-poll" action="/db" method="post">
 
-      <ul id="list">
-        <li>
+  <div class="poll-container">
+    <form id="create-poll" action="/api/poll" method="post">
+      <div class="vertically-arranged">  
+      <h4>Define Poll Parameters</h4>
+        
+        <span>
           <label for="poll-title">Poll Title</label>
           <input type="text" id="poll-title" name="poll-title">
-        </li>
-        <li>
+        </span>
+        <span>
           <label for="description">Description</label>
-          <input type="textarea" id="description" name="description">
-        </li>
-        <li>
+          <input type="textarea" id="description"  name="description">
+        </span>
+        <span>
           <label for="electorateSize">Expected amount of votes</label>
           <input type="electorateSize" id="electorateSize" name="electorateSize">
-        </li>
-       <li>
+        </span>
+       <span>
          <label for="email">Managing Email</label>
          <input type="email" id="email" name="email">
-       </li>
-       <li>
+       </span>
+       <span>
         <label for="duration">Running time (in hours)</label>
         <input type="duration" id="duration" name="duration">
-      </li>
-      </ul>
-
-      <h3>Candidates List</h3>
-      <input type="text" id="candidate">
-      <input type="button" value="Add Candidate" onClick="addCandidate()">
+      </span>
+    <!-- </div>
+    <div class="vertically-arranged"> -->
+      <h4>Candidates List</h4>
+     
       <ol id="candidates"></ol>
+       <span>
+      <input type="text" id="candidate" size=50>
+   
+      <input type="button" value="Add Candidate" onClick="addCandidate()">
+    </span>
 
-      <input type="submit" value="Create Poll">
+      <input id="submit" type="submit" value="Create Poll">
+    </div>
      </form>
+    </div>
   </main>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </body>
