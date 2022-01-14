@@ -22,8 +22,12 @@ module.exports = (db) => {
   });
 
   router.post("/dummy", (req, res)=>{});
+  
   router.get("/dummy", (req, res) => {
-    res.send(["a","b","c"]);
+    res.send({
+      title: "Title",
+      choices: ["a","b","c"]
+    });
   });
 
   return router;
