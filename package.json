@@ -10,7 +10,7 @@
     "db:reset": "node bin/resetdb.js"
   },
   "engines": {
-    "node": "16.x"
+    "node": "15.x"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
