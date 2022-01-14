@@ -45,7 +45,6 @@ module.exports = (db) => {
         .then(propertyChoice => {
           choice = propertyChoice;
           console.log(poll, choice);
-          // res.json({ poll: poll, choice: choice });
         })
         .then(() => {
           console.log("Poll id", poll.id);

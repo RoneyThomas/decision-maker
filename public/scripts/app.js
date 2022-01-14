@@ -1,7 +1,6 @@
 const choices = [];
 const $button = `<button></button>`;
 
-
 const createChoicesList = () => {
   let elements = $();
   const $ul = $('<ul></ul>').addClass('w-48 text-sm font-medium rounded-lg border bg-neutral-900 border-gray-500 text-gray-200').attr('id', 'choiceList');
@@ -38,10 +37,6 @@ $(() => {
     });
   });
 
-  // <tr>
-  //   <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">The Sliding Mr. Bones
-  //   </td>
-  // </tr>
   let searchParams = new URLSearchParams(window.location.search);
   $.get("/api/poll?id=" + searchParams.get('id'), (data) => {
     console.log(data);
@@ -123,11 +118,8 @@ $(() => {
       id: searchParams.get('id')
     };
     console.log(vote);
-
-
     $.post("/api/vote", vote, "json").done((data) => {
       window.location.href = '/vote-recorded';
     });
   });
 });
-// ?pollId=524c1254-d3af-4cca-9471-c5e493b5456c
