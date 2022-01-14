@@ -48,12 +48,18 @@ module.exports = (db) => {
           // res.json({ poll: poll, choice: choice });
         })
         .then(() => {
-          const adminLink = process.env.BASE_URL + `/results?adminId=${poll.admin_id}`;
-          const pollLink = process.env.BASE_URL + `/vote?pollId=${poll.id}`;
+          console.log("Poll id", poll.id);
+          const adminLink = process.env.BASE_URL + `/results?id=${poll.id}`;
+          const pollLink = process.env.BASE_URL + `/vote?id=${poll.id}`;
           return sendPollCreationEmail(poll.email, adminLink, pollLink);
         })
         .then(statusCode => {
           if (statusCode === 202) {
+            console.log({
+              status: "Success",
+              adminId: poll.admin_id,
+              pollId: poll.id
+            });
             res.json({
               status: "Success",
               adminId: poll.admin_id,

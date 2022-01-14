@@ -61,6 +61,11 @@ app.get("/vote-recorded", (req, res) => {
   res.render("vote-recorded");
 });
 
+app.get("/vote-created", (req, res) => {
+  res.render("vote-created");
+});
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

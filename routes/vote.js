@@ -9,6 +9,19 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+    console.log(req.body);
+    db.getVote(req.query.id)
+      .then((vote) => {
+        console.log(vote);
+        res.json({ vote: vote });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+
   router.post("/", (req, res) => {
     console.log(req.body);
     db.addVote({ ...req.body })

@@ -1,11 +1,4 @@
 const choices = [];
-{/* For deleting icon
-  <svg xmlns="http://www.w3.org/2000/svg"
-  class="absolute top-1.5 right-2 h-6 w-6 hover:stroke-red-600" fill="none" viewBox="0 0 24 24"
-  stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg> */}
 const $button = `<button></button>`;
 
 
@@ -40,23 +33,60 @@ $(() => {
       choices: choices,
       email: $("#email").val()
     };
-    $.post("/api/poll", poll, "json").done((data) => console.log(data));
+    $.post("/api/poll", poll, "json").done((data) => {
+      window.location.href = '/vote-created';
+    });
   });
 
-  sortable('.sortable');
   // <tr>
   //   <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">The Sliding Mr. Bones
   //   </td>
   // </tr>
   let searchParams = new URLSearchParams(window.location.search);
-  $.get("/api/poll?id=" + searchParams.get('pollId'), (data) => {
+  $.get("/api/poll?id=" + searchParams.get('id'), (data) => {
     console.log(data);
     $('#desicion').text(data.poll.decision);
     for (const x of data.poll.choices) {
       $('.sortable').append(`<tr>
-      <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${x}
+      <td class="flex flex-row space-x-6 py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+</svg>
+      <p>${x}</p>
       </td>
     </tr>`);
+    }
+    sortable('.sortable');
+  });
+
+  $.get("/api/vote?id=" + searchParams.get('id'), (data) => {
+    console.log(data);
+    let result = [];
+    let score = {};
+    for (const x of data.vote) {
+      result.push(x.poll_votes);
+    }
+    console.log(result);
+    for (let x = 0; x < result[0].length; x++) {
+      for (let y of result) {
+        if (y[x] in score) {
+          score[y[x]] += (result[0].length - (x + 1));
+        } else {
+          score[y[x]] = (result[0].length - (x + 1));
+        }
+      }
+    }
+    console.log(score);
+    const sortable = Object.entries(score)
+      .sort(([, a], [, b]) => b - a)
+      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    for (const [key, val] of Object.entries(sortable)) {
+      $('#results').append(`<tr>
+      <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${key}
+      </td>
+      <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${val}
+      </td >
+    </tr > `);
     }
   });
 
