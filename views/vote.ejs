@@ -2,27 +2,64 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/ballot.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <%- include('partials/_head') %>
+    <title>Descion Maker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.13.3/html5sortable.min.js"
+      integrity="sha512-3btxfhQfasdVcv1dKYZph5P7jFeeLRcF1gDVzFA+k9AiwwhB1MNI7O58zCK0uVItuMHNDR5pMoF2nqlCGzUwZQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<header><%- include('partials/_header') %></header>
-<body>
-  <main>
-    <form method="POST" action="/api/vote/">
-      <ol id="rank-container" class="poll-list"></ol>
-      <ol id="choice-container" class="poll-list"></ol>
-      <input type="submit" id="vote-submit" value="Submit">
-    </form>
+
+<body class="container sm:mx-auto bg-black px-4">
+  <%- include('partials/_header') %>
+    <main class="flex flex-col md:flex-row justify-center mx-auto md:max-w-4xl md:space-x-32">
+      <div class="md:max-w-sm pb-8 text-white">
+        <p class="text-3xl">
+          Make better descions based on Borda Count
+        </p>
+        <p class="text-xl pt-6">
+          In a Borda Count the voter preferences are determined based on a ranking. <br />
+          First place gets the most points,
+          second place one point less than the first, third place one point less than the second, the fourth place one
+          point less than the third, etc.
+        </p>
+      </div>
+      <div
+        class="p-4 max-width md:max-w-lg bg-white rounded-lg border shadow-md sm:p-6 lg:p-8 bg-neutral-900 border-slate-600">
+        <form class="space-y-6" id="vote" action="#">
+          <h3 class="text-xl font-medium text-white">Rank your Poll</h3>
+          <h3 class="text-lg font-small text-white">Drag and drop, highest to lowest</h3>
+          <h2 id="desicion" class="text-xl font-medium text-white"></h2>
+          <table class="table-fixed" id="sortable">
+            <thead>
+              <tr>
+                <th class="text-white">Choice</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="sortable">
+              <!-- <tr>
+                  <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">The Sliding Mr. Bones
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">Witchy Woman</td>
+                </tr>
+                <tr">
+                  <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">Shining Star</td>
+                  </tr> -->
+            </tbody>
+          </table>
+          <div class="space-y-4">
+          </div>
+          <button id="voteSubmit"
+            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </form>
+      </div>
     </main>
+    <footer>
+      <%- include('partials/_footer') %>
+    </footer>
 </body>
 
 </html>

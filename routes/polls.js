@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const matches = require('../lib/post-validate');
+const sendPollCreationEmail = require('../lib/email');
 
 const pollRequestRule = {
   decision: 'string',
@@ -16,10 +17,9 @@ const pollRequestRule = {
 };
 
 module.exports = (db) => {
-  router.get("/:id", (req, res) => {
+  router.get("/", (req, res) => {
     console.log("Inside the get");
-    console.log(req.params.id);
-    db.getPoll(req.params.id)
+    db.getPoll(req.query.id)
       .then((poll) => {
         res.json({ poll: poll });
       })
@@ -45,7 +45,25 @@ module.exports = (db) => {
         .then(propertyChoice => {
           choice = propertyChoice;
           console.log(poll, choice);
-          res.json({ poll: poll, choice: choice });
+          // res.json({ poll: poll, choice: choice });
+        })
+        .then(() => {
+          const adminLink = process.env.BASE_URL + `/results?adminId=${poll.admin_id}`;
+          const pollLink = process.env.BASE_URL + `/vote?pollId=${poll.id}`;
+          return sendPollCreationEmail(poll.email, adminLink, pollLink);
+        })
+        .then(statusCode => {
+          if (statusCode === 202) {
+            res.json({
+              status: "Success",
+              adminId: poll.admin_id,
+              pollId: poll.id
+            });
+          } else {
+            res.json({
+              status: "Fail",
+            });
+          }
         })
         .catch(e => {
           console.error(e);

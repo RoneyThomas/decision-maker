@@ -6,18 +6,87 @@
     <title>Descion Maker</title>
 </head>
 
-<body class="md:container sm:mx-auto px-4">
-  <header class="mx-auto">
-    <h1><a href="/"><img src="/img/logo.svg" alt="logo" height="22px" />Descion Maker</a></h1>
-  </header>
-  <main>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  </main>
-  <footer>
-    <%- include('partials/_footer') %>
-  </footer>
+<body class="container sm:mx-auto bg-black px-4">
+  <%- include('partials/_header') %>
+    <main class="flex flex-col md:flex-row justify-center mx-auto md:max-w-4xl md:space-x-32">
+      <div class="md:max-w-sm pb-8 text-white">
+        <p class="text-3xl">
+          Make better descions based on Borda Count
+        </p>
+        <p class="text-xl pt-6">
+          In a Borda Count the voter preferences are determined based on a ranking. <br />
+          First place gets the most points,
+          second place one point less than the first, third place one point less than the second, the fourth place one
+          point less than the third, etc.
+        </p>
+      </div>
+      <div
+        class="p-4 max-width md:max-w-md bg-white rounded-lg border shadow-md sm:p-6 lg:p-8 bg-neutral-900 border-slate-600">
+        <form class="space-y-6" id="poll" action="#">
+          <h3 class="text-xl font-medium text-white">Create your poll</h3>
+          <div>
+            <label for="question" class="block mb-2 text-sm font-medium text-gray-300">Poll Question</label>
+            <input type="text" name="question" id="question"
+              class="border border-slate-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-neutral-900 border-gray-500 placeholder-gray-400 text-white"
+              placeholder="Best movie?" required>
+          </div>
+          <div class="space-y-4">
+            <label for="choice" class="block mb-2 text-sm font-medium text-gray-300">Poll Choices</label>
+            <input type="text" name="choice" id="choice"
+              class="border border-slate-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-neutral-900 border-gray-500 placeholder-gray-400 text-white"
+              placeholder="Avengers">
+            <button id="addChoice"
+              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
+            <!-- <ul id="choiceList"
+              class="w-48 text-sm font-medium rounded-lg border bg-neutral-900 border-gray-500 text-gray-200">
+              <div class="relative">
+                <li class="py-2 px-4 w-full border-b border-gray-500">Profile
+                  <button>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                      class="absolute top-1.5 right-2 h-6 w-6 hover:stroke-red-600" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </button>
+                </li>
+              </div>
+              <li class="py-2 px-4 w-full border-b border-gray-500">Settings</li>
+              <li class="py-2 px-4 w-full border-b border-gray-500">Messages</li>
+              <li class="py-2 px-4 w-full">Download</li>
+            </ul> -->
+          </div>
+          <div>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Your
+              email</label>
+            <input type="email" name="email" id="email"
+              class="border border-slate-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-neutral-900 border-gray-500 placeholder-gray-400 text-white"
+              placeholder="name@company.com" required>
+          </div>
+          <!-- <div class="flex items-start">
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input id="remember" aria-describedby="remember" type="checkbox"
+                  class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                  required>
+              </div>
+              <!-- <div class="ml-3 text-sm">
+                <label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+              </div> -->
+          <!-- </div>
+      <a href="#" class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
+      </div> -->
+          <button type="submit"
+            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+          <!-- <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+            Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a> -->
+          <!-- </div> -->
+        </form>
+      </div>
+    </main>
+    <footer>
+      <%- include('partials/_footer') %>
+    </footer>
 </body>
 
 </html>
