@@ -24,34 +24,60 @@
       <div class="vertically-arranged">  
       <h4>Define Poll Parameters</h4>
         
-        <span>
+      <div>
+        <span class="left">
           <label for="poll-title">Poll Title</label>
-          <input type="text" id="poll-title" name="poll-title">
         </span>
-        <span>
+        <span class="right">
+          <input type="text" id="poll-title" name="decision">
+        </span>
+      </div>
+           
+      <div>
+        <span class="left">
           <label for="description">Description</label>
+        </span>
+        <span class="right">
           <input type="textarea" id="description"  name="description">
         </span>
-        <span>
+      </div>
+
+        <div>
+        <span class="left">
           <label for="electorateSize">Expected amount of votes</label>
+        </span>
+        <span class="right">
           <input type="electorateSize" id="electorateSize" name="electorateSize">
         </span>
-        <span>
+      </div>
+      
+      <div>
+          <span class="left">
           <label for="duration">Running time (in hours)</label>
-          <input type="duration" id="duration" name="duration">
         </span>
-       <span>
+        <span class="right">
+          <input type="duration" id="duration" name="duration">
+        </span >
+      </div>
+
+          <div>
+            <span class="left">
          <label for="email">Managing Email</label>
+        </span>
+        <span class="right">
          <input type="email" id="email" name="email">
-       </span>
+        </span >
+      </div>
+
        <div>
        <span class="left">
         <label for="distro">Voting Distro (comma-separated emails)</label>
       </span>
-      <span>
+      <span class="right">
         <input type="textarea" id="distro"  name="distro">
-      </span class="right">
+      </span >
        </div>
+
     <!-- </div>
     <div class="vertically-arranged"> -->
       <h4>Candidates List</h4>
