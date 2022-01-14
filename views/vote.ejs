@@ -17,9 +17,10 @@
 <header><%- include('partials/_header') %></header>
 <body>
   <main>
-    <header class="poll-title"> Placeholder Title</header>
-    <div class="content-container" style="height: fit-content;">
-      <!-- <div id="form-content"> -->
+   
+    <div class="content-container">
+      <div id="form-content">
+        <h4 class="poll-title"> Placeholder Title</h4>
         <form method="POST" action="/api/vote/">
           <ol id="rank-container" class="poll-list"></ol>
           <ol id="choice-container" class="poll-list"></ol>
@@ -27,7 +28,7 @@
             <input type="submit" id="vote-submit" value="Submit">
           </div>
         </form>
-      <!-- </div> -->
+      </div>
     </div>
   </main>
 </body>
