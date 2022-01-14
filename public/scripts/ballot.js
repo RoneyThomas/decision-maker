@@ -1,6 +1,6 @@
 $(function () {
   console.log("Ready");
-  
+
   loadBallot();
   $( "#choice-container" ).sortable();
 
@@ -18,7 +18,7 @@ $(function () {
 const createBallotElement = function (input) {
   // Create XSS safe text
   const choice = `${escape(input)}`;
-  return $(`<li id="choice_${choice}" class="ballot-entry">${choice}</li>`);
+  return $(`<li id="choice_${choice}" class="ballot-entry"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>${choice}</li>`);
 
 };
 
@@ -47,16 +47,16 @@ const renderBallot = function (choices) {
   let i = 0;
   for (const choice of choices) {
     i++;
-    let $rankNumber = createBallotElement(numToRank(i), null);
-    let $choice = createBallotElement(choice, i);
-    $('#rank-container').append($rankNumber);
+    let $choice = createBallotElement(choice);
+    $('#rank-container').append($(`<li class="ballot-entry">${numToRank(i)} pick</li>`));
     $('#choice-container').append($choice);
   }
 };
 
 const loadBallot = function () {
   $.get("/api/vote/dummy", (data) => {
-    renderBallot(data);
+    $(".poll-title").text(data.title)
+    renderBallot(data.choices);
   });
 };
 
