@@ -80,6 +80,17 @@ $(() => {
     const sortable = Object.entries(score)
       .sort(([, a], [, b]) => b - a)
       .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+    const chart = {
+      type: 'bar',                                // Show a bar chart
+      data: {
+        labels: Object.keys(sortable),   // Set X-axis labels
+        datasets: [{
+          label: 'Poll Result',                         // Create the 'Users' dataset
+          data: Object.values(sortable)           // Add data to the chart
+        }]
+      }
+    };
+    console.log(chart);
     for (const [key, val] of Object.entries(sortable)) {
       $('#results').append(`<tr>
       <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${key}
@@ -88,6 +99,10 @@ $(() => {
       </td >
     </tr > `);
     }
+    const url = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chart))}`;
+    $('#results-main').append(
+      `<img width="500" height="200" src=${url}>`
+    );
   });
 
 
@@ -105,7 +120,7 @@ $(() => {
     console.log(searchParams.get('pollId'));
     const vote = {
       choices: choices,
-      id: searchParams.get('pollId')
+      id: searchParams.get('id')
     };
     console.log(vote);
 
