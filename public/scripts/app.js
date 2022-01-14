@@ -38,11 +38,12 @@ $(() => {
   });
 
   let searchParams = new URLSearchParams(window.location.search);
-  $.get("/api/poll?id=" + searchParams.get('id'), (data) => {
-    console.log(data);
-    $('#desicion').text(data.poll.decision);
-    for (const x of data.poll.choices) {
-      $('.sortable').append(`<tr>
+  if (window.location.pathname == "/vote") {
+    $.get("/api/poll?id=" + searchParams.get('id'), (data) => {
+      console.log(data);
+      $('#desicion').text(data.poll.decision);
+      for (const x of data.poll.choices) {
+        $('.sortable').append(`<tr>
       <td class="flex flex-row space-x-6 py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -50,55 +51,60 @@ $(() => {
       <p>${x}</p>
       </td>
     </tr>`);
-    }
-    sortable('.sortable');
-  });
+      }
+      sortable('.sortable');
+    });
+  }
 
-  $.get("/api/vote?id=" + searchParams.get('id'), (data) => {
-    console.log(data);
-    let result = [];
-    let score = {};
-    for (const x of data.vote) {
-      result.push(x.poll_votes);
-    }
-    console.log(result);
-    for (let x = 0; x < result[0].length; x++) {
-      for (let y of result) {
-        if (y[x] in score) {
-          score[y[x]] += (result[0].length - (x + 1));
-        } else {
-          score[y[x]] = (result[0].length - (x + 1));
+  if (window.location.pathname == "/results") {
+    $.get("/api/vote?id=" + searchParams.get('id'), (data) => {
+      console.log(data);
+      let result = [];
+      let score = {};
+      for (const x of data.vote) {
+        result.push(x.poll_votes);
+      }
+      console.log(result);
+      if (result.length !== 0) {
+        for (let x = 0; x < result[0].length; x++) {
+          for (let y of result) {
+            if (y[x] in score) {
+              score[y[x]] += (result[0].length - (x + 1));
+            } else {
+              score[y[x]] = (result[0].length - (x + 1));
+            }
+          }
         }
       }
-    }
-    console.log(score);
-    const sortable = Object.entries(score)
-      .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-    const chart = {
-      type: 'bar',                                // Show a bar chart
-      data: {
-        labels: Object.keys(sortable),   // Set X-axis labels
-        datasets: [{
-          label: 'Poll Result',                         // Create the 'Users' dataset
-          data: Object.values(sortable)           // Add data to the chart
-        }]
-      }
-    };
-    console.log(chart);
-    for (const [key, val] of Object.entries(sortable)) {
-      $('#results').append(`<tr>
+      console.log(score);
+      const sortable = Object.entries(score)
+        .sort(([, a], [, b]) => b - a)
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+      const chart = {
+        type: 'bar',                                // Show a bar chart
+        data: {
+          labels: Object.keys(sortable),   // Set X-axis labels
+          datasets: [{
+            label: 'Poll Result',                         // Create the 'Users' dataset
+            data: Object.values(sortable)           // Add data to the chart
+          }]
+        }
+      };
+      console.log(chart);
+      for (const [key, val] of Object.entries(sortable)) {
+        $('#results').append(`<tr>
       <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${key}
       </td>
       <td class="py-4 px-6 text-md text-gray-500 whitespace-nowrap dark:text-gray-400">${val}
       </td >
     </tr > `);
-    }
-    const url = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chart))}`;
-    $('#results-main').append(
-      `<img width="500" height="200" src=${url}>`
-    );
-  });
+      }
+      const url = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chart))}`;
+      $('#results-main').append(
+        `<img width="500" height="200" src=${url}>`
+      );
+    });
+  }
 
 
   $("#vote").on("click", function(e) {
