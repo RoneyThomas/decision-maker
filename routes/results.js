@@ -16,8 +16,8 @@ module.exports = (db) => {
   router.get("/dummy", (req, res) => {
     res.send({title: "Title", results: [
       {
-        name: 'option1',
-        percent: .8
+        name: 'a',
+        percent: .21
     },
     {
       name: 'option2',

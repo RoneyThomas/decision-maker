@@ -22,6 +22,27 @@ nav {
   color: #FFFFFF;
 }
 
+.content-container {
+
+
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid black;
+  width: 400px;
+
+}
+
+.content-container * {
+  overflow-wrap: break-word;
+}
+
+.poll-title {
+  overflow: hidden;
+  border-bottom: 1px solid black;
+
+}
+
 footer {
   width: 100%;
   bottom: 0;

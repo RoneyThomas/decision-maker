@@ -20,5 +20,12 @@ module.exports = (db) => {
         res.send(e);
       });
   });
+
+  router.post("/dummy", (req, res)=>{});
+  router.get("/dummy", (req, res) => {
+    res.send(["a","b","c"]);
+  });
+
   return router;
+
 };
