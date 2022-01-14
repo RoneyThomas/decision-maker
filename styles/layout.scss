@@ -6,24 +6,103 @@ html {
   margin: 0;
 }
 
-nav {
-  overflow: hidden;
-  top: 0;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 120px;
-  padding: 1.5em;
-  width: 100%;
-  text-align: center;
+main {
+  padding: 120px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  margin: auto;
 
+}
+
+body {
+  min-height: 100vh;
+  background: rgb(163, 208, 219);
+  background: linear-gradient(
+    227deg,
+    rgba(163, 208, 219, 1) 0%,
+    rgba(163, 176, 219, 1) 20%,
+    rgba(163, 173, 219, 1) 34%,
+    rgba(163, 219, 208, 1) 59%,
+    rgba(163, 208, 219, 1) 74%,
+    rgba(163, 208, 219, 1) 100%
+  );
+  margin: auto;
+}
+
+
+nav {
   background-color: $purple;
   color: #FFFFFF;
+}
+
+.content-container {
+  //center content
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid black;
+  width: 400px;
+
+}
+
+.content-container * {
+  overflow-wrap: break-word;
+}
+
+.poll-title {
+  overflow: hidden;
+  border-bottom: 1px solid black;
+
 }
 
 footer {
   width: 100%;
   bottom: 0;
   background-color: purple;
+}
+
+
+.poll-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid black;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+}
+
+.vertically-arranged {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+span {
+  align-content: space-between;
+}
+
+#submit {
+  align-self: center;
+  margin-top: 10px;
+  overflow: visible;
+}
+
+.left {
+  float: left;
+  width:  350px ;
+}
+
+.right {
+  float: right;
 }

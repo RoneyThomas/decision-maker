@@ -6,19 +6,39 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/results.css" type="text/css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/results.js"></script>
+  <script type="text/javascript" src="/scripts/functions.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
 <header><%- include('partials/_header') %></header>
 <body>
   <main>
-    <!-- TODO: Implement results -->
+    <div class="content-container">
+      <header class="poll-title"><h2></h2></header>
+      <div class="results-list" id="results-list">
+        <!-- <section class="result-box">
+          <div class="option-name"><h5>1st</h5>Option 1</div>
+            <span class="result-bar-wrapper">
+              <span class="result-bar"></span>
+            </span>
+            <div>80%</div>
+        </section>
+        <section class="result-box">
+          <div class="option-name"><h5>2nd</h5>Option 2</div>
+            <span class="result-bar-wrapper">
+              <span class="result-bar" style="width: 20%;"></span>
+            </span>
+            <div>20%</div>
+        </section> -->
+      </div>
+    </div>
   </main>
 </body>
 

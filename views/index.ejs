@@ -18,39 +18,81 @@
 <header><%- include('partials/_header') %></header>
 <body>
   <main>
-    <!-- use '/db' as a placeholder for action -->
-    <form id="create-poll" action="/db" method="post">
 
-      <ul id="list">
-        <li>
+  <div class="poll-container">
+    <form id="create-poll" action="/api/poll" method="post">
+      <div class="vertically-arranged">  
+      <h4>Define Poll Parameters</h4>
+        
+      <div>
+        <span class="left">
           <label for="poll-title">Poll Title</label>
-          <input type="text" id="poll-title" name="poll-title">
-        </li>
-        <li>
+        </span>
+        <span class="right">
+          <input type="text" id="poll-title" name="decision">
+        </span>
+      </div>
+           
+      <div>
+        <span class="left">
           <label for="description">Description</label>
-          <input type="textarea" id="description" name="description">
-        </li>
-        <li>
+        </span>
+        <span class="right">
+          <input type="textarea" id="description"  name="description">
+        </span>
+      </div>
+
+        <div>
+        <span class="left">
           <label for="electorateSize">Expected amount of votes</label>
+        </span>
+        <span class="right">
           <input type="electorateSize" id="electorateSize" name="electorateSize">
-        </li>
-       <li>
+        </span>
+      </div>
+      
+      <div>
+          <span class="left">
+          <label for="duration">Running time (in hours)</label>
+        </span>
+        <span class="right">
+          <input type="duration" id="duration" name="duration">
+        </span >
+      </div>
+
+          <div>
+            <span class="left">
          <label for="email">Managing Email</label>
+        </span>
+        <span class="right">
          <input type="email" id="email" name="email">
-       </li>
-       <li>
-        <label for="duration">Running time (in hours)</label>
-        <input type="duration" id="duration" name="duration">
-      </li>
-      </ul>
+        </span >
+      </div>
 
-      <h3>Candidates List</h3>
-      <input type="text" id="candidate">
-      <input type="button" value="Add Candidate" onClick="addCandidate()">
+       <div>
+       <span class="left">
+        <label for="distro">Voting Distro (comma-separated emails)</label>
+      </span>
+      <span class="right">
+        <input type="textarea" id="distro"  name="distro">
+      </span >
+       </div>
+
+    <!-- </div>
+    <div class="vertically-arranged"> -->
+      <h4>Candidates List</h4>
+     
       <ol id="candidates"></ol>
+       <span>
+      <input type="text" id="candidate" size=50>
+   
+      <input type="button" value="Add Candidate" onClick="addCandidate()">
+    </span>
 
-      <input type="submit" value="Create Poll">
+      <input id="submit" type="submit" value="Create Poll">
+    </div>
      </form>
+    </div>
   </main>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </body>
