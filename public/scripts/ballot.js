@@ -12,7 +12,7 @@ $(document).ready(function () {
     const poll_votes = $("#choice-container").sortable("toArray").map(x=>x.slice(7));
     $.post("/api/vote/dummy", { poll_votes });
     console.log(poll_votes);
-  $('form').replaceWith( `<h1>THANK YOU FOR VOTING</h1>`);
+  $('#form-content').replaceWith( `<h1>THANK YOU FOR VOTING</h1>`);
   })
 });
 
